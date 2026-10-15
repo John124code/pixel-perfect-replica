@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DigitizingRouteImport } from './routes/digitizing'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as SellerRouteImport } from './routes/seller'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DigitizingRoute = DigitizingRouteImport.update({
+  id: '/digitizing',
+  path: '/digitizing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellerRoute = SellerRouteImport.update({
+  id: '/seller',
+  path: '/seller',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
+  '/cart': typeof CartRoute
+  '/dashboard': typeof DashboardRoute
+  '/digitizing': typeof DigitizingRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/seller': typeof SellerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
+  '/cart': typeof CartRoute
+  '/dashboard': typeof DashboardRoute
+  '/digitizing': typeof DigitizingRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/seller': typeof SellerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
+  '/cart': typeof CartRoute
+  '/dashboard': typeof DashboardRoute
+  '/digitizing': typeof DigitizingRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/seller': typeof SellerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/cart'
+    | '/dashboard'
+    | '/digitizing'
+    | '/how-it-works'
+    | '/marketplace'
+    | '/seller'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/cart'
+    | '/dashboard'
+    | '/digitizing'
+    | '/how-it-works'
+    | '/marketplace'
+    | '/seller'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/cart'
+    | '/dashboard'
+    | '/digitizing'
+    | '/how-it-works'
+    | '/marketplace'
+    | '/seller'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
+  CartRoute: typeof CartRoute
+  DashboardRoute: typeof DashboardRoute
+  DigitizingRoute: typeof DigitizingRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  MarketplaceRoute: typeof MarketplaceRoute
+  SellerRoute: typeof SellerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/digitizing': {
+      id: '/digitizing'
+      path: '/digitizing'
+      fullPath: '/digitizing'
+      preLoaderRoute: typeof DigitizingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seller': {
+      id: '/seller'
+      path: '/seller'
+      fullPath: '/seller'
+      preLoaderRoute: typeof SellerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
+  CartRoute: CartRoute,
+  DashboardRoute: DashboardRoute,
+  DigitizingRoute: DigitizingRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  MarketplaceRoute: MarketplaceRoute,
+  SellerRoute: SellerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

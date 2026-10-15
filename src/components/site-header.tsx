@@ -1,13 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Search, ShoppingBag, User } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 import { useCart } from "@/lib/cart";
 
 export function Logo() {
@@ -63,20 +56,7 @@ export function SiteHeader() {
               </span>
             )}
           </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger aria-label="Account" className="grid h-8 w-8 place-items-center rounded-full border text-foreground/70 hover:border-gold hover:text-gold">
-              <User className="h-4 w-4" strokeWidth={1.4} />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel className="font-normal text-muted-foreground">Sign in to EMB Connect</DropdownMenuLabel>
-              <DropdownMenuItem>Continue with Google</DropdownMenuItem>
-              <DropdownMenuItem>Continue with Email</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem asChild><Link to="/dashboard">Buyer dashboard</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link to="/seller">Seller portal</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link to="/admin">Admin panel</Link></DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <AccountMenu />
         </div>
       </div>
     </header>
@@ -100,6 +80,31 @@ export function PageIntro({ eyebrow, title, sub }: { eyebrow: string; title: str
       <p className="eyebrow">{eyebrow}</p>
       <h1 className="mt-4 text-5xl md:text-6xl">{title}</h1>
       {sub && <p className="mt-4 max-w-xl text-muted-foreground">{sub}</p>}
+    </div>
+  );
+}
+
+function AccountMenu() {
+  const [open, setOpen] = useState(false);
+  const item = "block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-accent";
+  return (
+    <div className="relative" onMouseLeave={() => setOpen(false)}>
+      <button onClick={() => setOpen(!open)} aria-label="Account" className="grid h-8 w-8 place-items-center rounded-full border text-foreground/70 hover:border-gold hover:text-gold">
+        <User className="h-4 w-4" strokeWidth={1.4} />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full z-50 w-56 pt-2">
+          <div className="rounded-xl border bg-popover p-1.5 shadow-soft" onClick={() => setOpen(false)}>
+            <p className="px-3 py-2 text-xs text-muted-foreground">Sign in to EMB Connect</p>
+            <button className={item}>Continue with Google</button>
+            <button className={item}>Continue with Email</button>
+            <div className="my-1 h-px bg-border" />
+            <Link to="/dashboard" className={item}>Buyer dashboard</Link>
+            <Link to="/seller" className={item}>Seller portal</Link>
+            <Link to="/admin" className={item}>Admin panel</Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

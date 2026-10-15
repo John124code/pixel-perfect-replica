@@ -27,7 +27,7 @@ function Digitizing() {
   const [garment, setGarment] = useState("Agbada");
   const [size, setSize] = useState(20);
   const [rush, setRush] = useState(false);
-  const quote = Math.round((base[garment] * (size / 20) * (rush ? 1.5 : 1)) / 500) * 500;
+  const quote = Math.round(((base[garment] ?? 10000) * (size / 20) * (rush ? 1.5 : 1)) / 500) * 500;
 
   return (
     <>

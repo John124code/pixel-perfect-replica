@@ -34,7 +34,7 @@ function Marketplace() {
         <div className="flex flex-col gap-4 border-y py-5 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-2">
             {cats.map((c) => (
-              <button key={c} onClick={() => setCat(c)} className={`rounded-full border px-4 py-1.5 text-xs transition ${cat === c ? "border-gold bg-gold text-primary-foreground" : "hover:border-gold"}`}>{c}</button>
+              <button key={c} onClick={() => setCat(c)} className={`rounded-full border px-4 py-1.5 text-xs transition ${cat === c ? "border-highlight bg-highlight text-primary-foreground" : "hover:border-highlight"}`}>{c}</button>
             ))}
           </div>
           <label className="flex items-center gap-2 rounded-full border px-4 py-2">

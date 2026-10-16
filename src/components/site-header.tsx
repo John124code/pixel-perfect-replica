@@ -11,8 +11,8 @@ export function Logo() {
         <path d="M7 19c4-9 8 6 12-3s5-4 6-2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
         <circle cx="25" cy="14" r="1.4" fill="currentColor" />
       </svg>
-      <span className="font-display text-2xl tracking-tight">
-        EMB <span className="italic text-foreground">Connect</span>
+      <span className="text-lg font-medium tracking-tight text-foreground">
+        EMB Connect
       </span>
     </Link>
   );
@@ -28,7 +28,7 @@ const nav = [
 export function SiteHeader() {
   const { items } = useCart();
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/60 backdrop-blur-xl backdrop-saturate-150">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-4">
         <Logo />
         <nav className="hidden gap-9 md:flex">

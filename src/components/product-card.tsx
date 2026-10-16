@@ -5,9 +5,9 @@ import { useCart } from "@/lib/cart";
 export function ProductCard({ d }: { d: Design }) {
   const { add } = useCart();
   return (
-    <div className="group">
-      <div className="relative aspect-square overflow-hidden rounded-2xl border bg-muted">
-        <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+    <div className="group animate-fade-up rounded-2xl border bg-card p-3 transition duration-500 hover:-translate-y-1 hover:scale-[1.02] hover:border-foreground/30">
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
+        <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
         <span className="absolute left-3 top-3 rounded-full bg-background/90 px-2.5 py-1 text-[10px] tracking-wide backdrop-blur">
           {(d.stitches / 1000).toFixed(1)}k stitches
         </span>
@@ -21,13 +21,13 @@ export function ProductCard({ d }: { d: Design }) {
           Add to Cart
         </button>
       </div>
-      <div className="mt-4 flex items-start justify-between gap-3">
+      <div className="mt-4 px-1 pb-1 flex items-start justify-between gap-3">
         <div>
           <h3 className="font-sans text-[15px] font-normal">{d.title}</h3>
           <p className="mt-0.5 text-xs text-muted-foreground">by {d.designer}</p>
           <div className="mt-2 flex gap-1.5">
             {d.formats.map((f) => (
-              <span key={f} className="rounded border px-1.5 py-0.5 text-[10px] text-muted-foreground">{f}</span>
+              <span key={f} className="rounded border px-1.5 py-0.5 text-[10px] text-muted-foreground">.{f}</span>
             ))}
           </div>
         </div>

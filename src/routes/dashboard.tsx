@@ -33,14 +33,14 @@ function Dashboard() {
           const inner = (
             <>
               <div className="flex items-center justify-between">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-soft text-gold"><Icon className="h-5 w-5" strokeWidth={1.3} /></span>
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-secondary text-foreground"><Icon className="h-5 w-5" strokeWidth={1.3} /></span>
                 <span className="text-xs text-muted-foreground">{stat}</span>
               </div>
               <h3 className="mt-8 text-2xl">{title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
             </>
           );
-          const cls = "block rounded-2xl border p-7 transition duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-soft";
+          const cls = "block rounded-2xl border p-7 transition duration-300 hover:-translate-y-1 hover:border-foreground/60 hover:shadow-soft";
           return to ? <Link key={title} to={to} className={cls}>{inner}</Link> : href ? <a key={title} href={href} target="_blank" rel="noreferrer" className={cls}>{inner}</a> : <div key={title} className={cls}>{inner}</div>;
         })}
       </div>

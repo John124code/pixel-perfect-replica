@@ -4,11 +4,14 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { CartProvider, useCart } from "@/lib/cart";
 import { designs } from "@/lib/data";
 
+const [first, second, third] = designs;
+if (!first || !second || !third) throw new Error("the catalogue needs at least three designs");
+
 function Consumer() {
   const { items, add } = useCart();
   return (
     <div>
-      <button onClick={() => add(designs[0])}>add first design</button>
+      <button onClick={() => add(first)}>add first design</button>
       <span data-testid="count">{items.length}</span>
       <span data-testid="titles">{items.map((i) => i.title).join(",")}</span>
     </div>
@@ -30,11 +33,11 @@ describe("Cart persistence", () => {
     fireEvent.click(screen.getByText("add first design"));
 
     expect(screen.getByTestId("count").textContent).toBe("1");
-    expect(readStorage()).toEqual([designs[0].id]);
+    expect(readStorage()).toEqual([first.id]);
   });
 
   it("restores the cart when the app starts again", async () => {
-    localStorage.setItem("emb-cart", JSON.stringify([designs[1].id, designs[2].id]));
+    localStorage.setItem("emb-cart", JSON.stringify([second.id, third.id]));
 
     render(
       <CartProvider>
@@ -43,11 +46,11 @@ describe("Cart persistence", () => {
     );
 
     await waitFor(() => expect(screen.getByTestId("count").textContent).toBe("2"));
-    expect(screen.getByTestId("titles").textContent).toBe(`${designs[1].title},${designs[2].title}`);
+    expect(screen.getByTestId("titles").textContent).toBe(`${second.title},${third.title}`);
   });
 
   it("drops saved ids that are no longer in the catalogue", async () => {
-    localStorage.setItem("emb-cart", JSON.stringify(["removed-design", designs[0].id]));
+    localStorage.setItem("emb-cart", JSON.stringify(["removed-design", first.id]));
 
     render(
       <CartProvider>
@@ -56,6 +59,6 @@ describe("Cart persistence", () => {
     );
 
     await waitFor(() => expect(screen.getByTestId("count").textContent).toBe("1"));
-    expect(screen.getByTestId("titles").textContent).toBe(designs[0].title);
+    expect(screen.getByTestId("titles").textContent).toBe(first.title);
   });
 });

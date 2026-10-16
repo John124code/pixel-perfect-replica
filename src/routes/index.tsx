@@ -20,9 +20,9 @@ const tags = ["#AgbadaMasterpieces", "#DSTFormat", "#InstantDownload", "#Senator
 function Home() {
   return <>
     <section className="bg-background">
-      <div className="mx-auto max-w-7xl px-6 pb-16 pt-16 md:pb-20 md:pt-24">
+      <div className="mx-auto max-w-7xl px-6 pb-10 pt-10 md:pb-20 md:pt-24">
         <div className="mb-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground"><span className="h-1.5 w-1.5 rounded-full bg-foreground" /> African craft. Digital precision.</div>
-        <h1 className="max-w-5xl text-5xl font-medium leading-[1.1] sm:text-6xl md:text-7xl">EMB Connect<span className="mt-3 block text-muted-foreground">Every stitch. Reimagined.</span></h1>
+        <h1 className="max-w-5xl text-[40px] font-medium leading-[1.1] sm:text-6xl md:text-7xl">EMB Connect<span className="mt-3 block text-muted-foreground">Every stitch. Reimagined.</span></h1>
         <div className="mt-8 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <p className="max-w-md text-base leading-7 text-muted-foreground">Extraordinary African embroidery, ready for your machine. Discover the next detail that makes your work unmistakable.</p>
           <Button asChild variant="outline" className="h-11 self-start md:self-auto"><Link to="/marketplace">Explore designs <ArrowUpRight /></Link></Button>

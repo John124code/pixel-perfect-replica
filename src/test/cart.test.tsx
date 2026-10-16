@@ -33,7 +33,7 @@ describe("Cart persistence", () => {
     expect(readStorage()).toEqual([designs[0].id]);
   });
 
-  it("restores the cart when the app starts again", () => {
+  it("restores the cart when the app starts again", async () => {
     localStorage.setItem("emb-cart", JSON.stringify([designs[1].id, designs[2].id]));
 
     render(
@@ -42,11 +42,11 @@ describe("Cart persistence", () => {
       </CartProvider>,
     );
 
-    waitFor(() => expect(screen.getByTestId("count").textContent).toBe("2"));
+    await waitFor(() => expect(screen.getByTestId("count").textContent).toBe("2"));
     expect(screen.getByTestId("titles").textContent).toBe(`${designs[1].title},${designs[2].title}`);
   });
 
-  it("drops saved ids that are no longer in the catalogue", () => {
+  it("drops saved ids that are no longer in the catalogue", async () => {
     localStorage.setItem("emb-cart", JSON.stringify(["removed-design", designs[0].id]));
 
     render(
@@ -55,7 +55,7 @@ describe("Cart persistence", () => {
       </CartProvider>,
     );
 
-    waitFor(() => expect(screen.getByTestId("count").textContent).toBe("1"));
+    await waitFor(() => expect(screen.getByTestId("count").textContent).toBe("1"));
     expect(screen.getByTestId("titles").textContent).toBe(designs[0].title);
   });
 });

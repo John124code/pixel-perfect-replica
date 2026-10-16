@@ -43,7 +43,7 @@ function Marketplace() {
           </label>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
-          {list.map((d) => <ProductCard key={d.id} d={d} />)}
+          {list.map((d, i) => <ProductCard key={d.id} d={d} index={i} />)}
         </div>
         {list.length === 0 && <p className="py-20 text-center text-muted-foreground">No designs match your search.</p>}
       </div>

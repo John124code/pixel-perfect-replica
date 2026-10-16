@@ -27,7 +27,7 @@ export function ProductCard({ d, index = 0 }: { d: Design; index?: number }) {
           <p className="mt-0.5 text-xs text-muted-foreground">by {d.designer}</p>
           <div className="mt-2 flex gap-1.5">
             {d.formats.map((f) => (
-              <span key={f} className="rounded-md border bg-card px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">.{f}</span>
+              <span key={f} className="rounded-md border bg-card px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">{f}</span>
             ))}
           </div>
         </div>

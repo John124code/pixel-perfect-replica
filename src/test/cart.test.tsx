@@ -2,10 +2,16 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { CartProvider, useCart } from "@/lib/cart";
-import { designs } from "@/lib/data";
+import { designs, type Design } from "@/lib/data";
 
-const [first, second, third] = designs;
-if (!first || !second || !third) throw new Error("the catalogue needs at least three designs");
+const at = (i: number): Design => {
+  const d = designs[i];
+  if (!d) throw new Error(`the catalogue needs a design at index ${i}`);
+  return d;
+};
+const first = at(0);
+const second = at(1);
+const third = at(2);
 
 function Consumer() {
   const { items, add } = useCart();

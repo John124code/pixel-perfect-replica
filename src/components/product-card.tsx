@@ -7,7 +7,7 @@ export function ProductCard({ d, index = 0 }: { d: Design; index?: number }) {
   return (
     <div className="group animate-fade-up" style={{ animationDelay: `${index * 70}ms` }}>
       <div className="relative aspect-square overflow-hidden rounded-2xl border bg-card transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/30 group-hover:shadow-glow">
-        <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition-transform duration-700 ease-out opacity-90 group-hover:scale-[1.06] group-hover:opacity-100" />
+        <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="h-full w-full object-cover grayscale contrast-125 brightness-90 transition-transform duration-700 ease-out opacity-90 group-hover:scale-[1.06] group-hover:opacity-100" />
         <span className="absolute left-3 top-3 rounded-full bg-background/90 px-2.5 py-1 text-[10px] tracking-wide backdrop-blur">
           {(d.stitches / 1000).toFixed(1)}k stitches
         </span>

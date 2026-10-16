@@ -75,7 +75,7 @@ function Home() {
         <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5">
           {categories.map((c) => (
             <Link key={c.name} to="/marketplace" className="group relative aspect-[3/4] overflow-hidden rounded-2xl border">
-              <img src={c.image} alt={c.name} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+              <img src={c.image} alt={c.name} loading="lazy" width={816} height={816} className="h-full w-full object-cover grayscale contrast-125 brightness-90 transition duration-700 group-hover:scale-105" />
               <div className="absolute inset-x-3 bottom-3 flex items-center justify-between rounded-xl bg-background/90 px-4 py-3 backdrop-blur">
                 <div><p className="text-sm font-normal">{c.name}</p><p className="text-[11px] text-muted-foreground">{c.count} designs</p></div>
                 <ArrowUpRight className="h-4 w-4 text-highlight" strokeWidth={1.4} />

@@ -1,14 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, ShieldCheck, Lock, Download, ArrowUpRight } from "lucide-react";
+import hero from "@/assets/hero.jpg";
 import { categories, designs } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "EMB Connect — The Standard of African Embroidery" },
+      { title: "EMB Connect — The Gold Standard of African Embroidery" },
       { name: "description", content: "Curated machine-ready DST and EMB files for Agbada, Senator, Kaftan, Dansiki, Caps and Gele from Africa's master digitizers." },
-      { property: "og:title", content: "EMB Connect — The Standard of African Embroidery" },
+      { property: "og:title", content: "EMB Connect — The Gold Standard of African Embroidery" },
       { property: "og:description", content: "Machine-ready DST and EMB embroidery files from Africa's master digitizers." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -17,38 +18,28 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const tags = ["#AgbadaMasterpieces", "#DSTFormat", "#InstantDownload", "#SenatorKaftan", "#WilcomEMB"];
-
 function Home() {
   return (
     <>
-      <section className="relative overflow-hidden border-b">
+      <section className="relative overflow-hidden">
+        <img src={hero} alt="Gold embroidery thread on dark fabric" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-28 md:pt-36">
-          <p className="eyebrow animate-fade-up">Machine-ready · DST · EMB</p>
-          <h1 className="mt-6 max-w-4xl animate-fade-up text-5xl leading-[1.02] md:text-8xl">
-            The standard of <span className="text-muted-foreground">African embroidery.</span>
+        <div className="relative mx-auto max-w-7xl px-6 py-32 md:py-44">
+          <p className="eyebrow">Machine-ready · DST · EMB</p>
+          <h1 className="mt-6 max-w-3xl text-5xl leading-[1.05] text-ink-foreground md:text-7xl">
+            The Gold Standard of <em className="text-gold">African Embroidery.</em>
           </h1>
-          <p className="mt-6 max-w-lg text-lg text-muted-foreground">
+          <p className="mt-6 max-w-lg text-lg text-ink-foreground/75">
             Curated machine-ready DST and EMB files from Africa's master digitizers.
           </p>
-          <form className="mt-10 flex max-w-2xl items-center rounded-full border bg-card p-1.5 transition focus-within:border-foreground/40" onSubmit={(e) => e.preventDefault()}>
+          <form className="mt-10 flex max-w-2xl items-center rounded-full border border-gold bg-background p-1.5 shadow-soft" onSubmit={(e) => e.preventDefault()}>
             <Search className="ml-4 h-4 w-4 text-muted-foreground" strokeWidth={1.4} />
             <input placeholder="Search Agbada neckline, cap band, gele..." className="flex-1 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-muted-foreground" />
-            <Link to="/marketplace" className="rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground transition hover:shadow-gold">Search</Link>
+            <Link to="/marketplace" className="rounded-full bg-gold px-7 py-3 text-sm text-primary-foreground transition hover:shadow-gold">Search</Link>
           </form>
           <div className="mt-6 flex flex-wrap gap-2">
-            {categories.map((c) => (
-              <Link key={c.name} to="/marketplace" className="rounded-full border px-4 py-1.5 text-xs text-muted-foreground transition hover:border-foreground hover:text-foreground">{c.name}</Link>
-            ))}
-          </div>
-        </div>
-        <div className="relative overflow-hidden border-t py-6 [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-          <div className="flex w-max animate-marquee gap-12 hover:[animation-play-state:paused]">
-            {[...tags, ...tags, ...tags, ...tags].map((t, i) => (
-              <span key={i} className="flex items-center gap-12 whitespace-nowrap text-2xl font-medium tracking-tight text-foreground/80 md:text-4xl">
-                {t}<span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-              </span>
+            {["#Agbada", "#SenatorKaftan", "#Dansiki", "#Caps"].map((t) => (
+              <Link key={t} to="/marketplace" className="rounded-full border border-ink-foreground/25 px-4 py-1.5 text-xs text-ink-foreground/85 backdrop-blur transition hover:border-gold hover:text-gold">{t}</Link>
             ))}
           </div>
         </div>
@@ -62,7 +53,7 @@ function Home() {
             { i: Download, t: "Instant Post-Checkout Downloads" },
           ].map(({ i: Icon, t }) => (
             <div key={t} className="flex items-center justify-center gap-3 text-sm text-muted-foreground">
-              <Icon className="h-4 w-4 text-foreground" strokeWidth={1.3} /> {t}
+              <Icon className="h-4 w-4 text-gold" strokeWidth={1.3} /> {t}
             </div>
           ))}
         </div>
@@ -74,11 +65,11 @@ function Home() {
         </div>
         <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5">
           {categories.map((c) => (
-            <Link key={c.name} to="/marketplace" className="group relative aspect-[3/4] overflow-hidden rounded-2xl border bg-card transition duration-500 hover:scale-[1.02] hover:border-foreground/30">
+            <Link key={c.name} to="/marketplace" className="group relative aspect-[3/4] overflow-hidden rounded-2xl border">
               <img src={c.image} alt={c.name} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-              <div className="absolute inset-x-3 bottom-3 flex items-center justify-between rounded-xl bg-background/70 px-4 py-3 backdrop-blur-md border">
+              <div className="absolute inset-x-3 bottom-3 flex items-center justify-between rounded-xl bg-background/90 px-4 py-3 backdrop-blur">
                 <div><p className="text-sm font-normal">{c.name}</p><p className="text-[11px] text-muted-foreground">{c.count} designs</p></div>
-                <ArrowUpRight className="h-4 w-4 text-foreground" strokeWidth={1.4} />
+                <ArrowUpRight className="h-4 w-4 text-gold" strokeWidth={1.4} />
               </div>
             </Link>
           ))}
@@ -88,7 +79,7 @@ function Home() {
       <section className="mx-auto max-w-7xl px-6 pt-28">
         <div className="flex items-end justify-between">
           <div><p className="eyebrow">Curated</p><h2 className="mt-3 text-4xl md:text-5xl">Featured designs</h2></div>
-          <Link to="/marketplace" className="text-sm text-muted-foreground hover:text-foreground">View all →</Link>
+          <Link to="/marketplace" className="text-sm text-muted-foreground hover:text-gold">View all →</Link>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
           {designs.slice(0, 8).map((d) => <ProductCard key={d.id} d={d} />)}

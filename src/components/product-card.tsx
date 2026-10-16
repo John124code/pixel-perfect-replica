@@ -1,38 +1,35 @@
-import { Heart } from "lucide-react";
+import { Heart, Plus } from "lucide-react";
 import { formatNaira, type Design } from "@/lib/data";
 import { useCart } from "@/lib/cart";
+import { Button } from "@/components/ui/button";
 
 export function ProductCard({ d }: { d: Design }) {
   const { add } = useCart();
   return (
-    <div className="group">
-      <div className="relative aspect-square overflow-hidden rounded-2xl border bg-muted">
-        <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <span className="absolute left-3 top-3 rounded-full bg-background/90 px-2.5 py-1 text-[10px] tracking-wide backdrop-blur">
+    <article className="product-entry group overflow-hidden rounded-lg border bg-card transition-transform duration-500 hover:scale-[1.015]">
+      <div className="relative aspect-square overflow-hidden bg-muted">
+        <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="embroidery-image h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <span className="absolute left-3 top-3 rounded border border-foreground/10 bg-background/85 px-2.5 py-1 text-[10px] text-foreground backdrop-blur">
           {(d.stitches / 1000).toFixed(1)}k stitches
         </span>
-        <button aria-label="Save" className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-background/90 text-foreground/60 hover:text-gold">
-          <Heart className="h-4 w-4" strokeWidth={1.4} />
-        </button>
-        <button
-          onClick={() => add(d)}
-          className="absolute inset-x-3 bottom-3 translate-y-[140%] rounded-full bg-gold py-3 text-sm font-normal text-primary-foreground shadow-gold transition-transform duration-500 ease-out group-hover:translate-y-0"
-        >
-          Add to Cart
-        </button>
+        <Button variant="ghost" size="icon" aria-label={`Save ${d.title}`} title="Save design" className="absolute right-3 top-3 h-8 w-8 rounded-full bg-background/85 text-foreground">
+          <Heart strokeWidth={1.4} />
+        </Button>
+        <Button onClick={() => add(d)} className="product-add absolute inset-x-3 bottom-3 h-10 translate-y-[140%] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          <Plus /> Add to Cart
+        </Button>
       </div>
-      <div className="mt-4 flex items-start justify-between gap-3">
-        <div>
-          <h3 className="font-sans text-[15px] font-normal">{d.title}</h3>
-          <p className="mt-0.5 text-xs text-muted-foreground">by {d.designer}</p>
-          <div className="mt-2 flex gap-1.5">
-            {d.formats.map((f) => (
-              <span key={f} className="rounded border px-1.5 py-0.5 text-[10px] text-muted-foreground">{f}</span>
-            ))}
+      <div className="p-4">
+        <p className="mb-2 text-[10px] uppercase tracking-widest text-muted-foreground">{d.category}</p>
+        <h3 className="font-sans text-sm font-medium leading-6">{d.title}</h3>
+        <p className="mt-0.5 text-xs text-muted-foreground">by {d.designer}</p>
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t pt-3">
+          <div className="flex gap-1.5">
+            {d.formats.map((f) => <span key={f} className="rounded border px-1.5 py-0.5 text-[10px] text-muted-foreground">{f}</span>)}
           </div>
+          <p className="text-sm font-semibold tabular-nums">{formatNaira(d.price)}</p>
         </div>
-        <p className="text-[15px] font-normal">{formatNaira(d.price)}</p>
       </div>
-    </div>
+    </article>
   );
 }

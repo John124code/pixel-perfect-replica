@@ -5,7 +5,7 @@ import { useCart } from "@/lib/cart";
 export function ProductCard({ d }: { d: Design }) {
   const { add } = useCart();
   return (
-    <div className="group animate-fade-up rounded-2xl border bg-card p-3 transition duration-500 hover:-translate-y-1 hover:border-foreground/25 hover:shadow-glow">
+    <div className="group animate-fade-up rounded-2xl border bg-card p-3 transition duration-500 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-glow">
       <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
         <img src={d.image} alt={d.title} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
         <span className="absolute left-3 top-3 rounded-full bg-background/70 px-2.5 py-1 text-[10px] tracking-wide backdrop-blur">

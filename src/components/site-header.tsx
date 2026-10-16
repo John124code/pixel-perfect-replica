@@ -6,11 +6,7 @@ import { useCart } from "@/lib/cart";
 export function Logo() {
   return (
     <Link to="/" className="flex items-center gap-2.5">
-      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" className="text-foreground" aria-hidden>
-        <circle cx="16" cy="16" r="14.5" stroke="currentColor" strokeWidth="1" />
-        <path d="M7 19c4-9 8 6 12-3s5-4 6-2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <circle cx="25" cy="14" r="1.4" fill="currentColor" />
-      </svg>
+      <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[11px] font-semibold tracking-tight text-primary-foreground">EC</span>
       <span className="text-lg font-medium tracking-tight text-foreground">
         EMB Connect
       </span>
@@ -28,7 +24,7 @@ const nav = [
 export function SiteHeader() {
   const { items } = useCart();
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/60 backdrop-blur-xl backdrop-saturate-150">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-xl backdrop-saturate-150">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-4">
         <Logo />
         <nav className="hidden gap-9 md:flex">

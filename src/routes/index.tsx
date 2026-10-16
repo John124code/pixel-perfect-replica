@@ -27,19 +27,19 @@ function Home() {
         <div className="relative mx-auto max-w-7xl px-6 py-32 md:py-44">
           <p className="eyebrow">Machine-ready · DST · EMB</p>
           <h1 className="mt-6 max-w-3xl text-5xl leading-[1.05] text-ink-foreground md:text-7xl">
-            The Gold Standard of <em className="text-gold">African Embroidery.</em>
+            The Gold Standard of <em className="text-foreground">African Embroidery.</em>
           </h1>
           <p className="mt-6 max-w-lg text-lg text-ink-foreground/75">
             Curated machine-ready DST and EMB files from Africa's master digitizers.
           </p>
-          <form className="mt-10 flex max-w-2xl items-center rounded-full border border-gold bg-background p-1.5 shadow-soft" onSubmit={(e) => e.preventDefault()}>
+          <form className="mt-10 flex max-w-2xl items-center rounded-full border border-foreground bg-background p-1.5 shadow-soft" onSubmit={(e) => e.preventDefault()}>
             <Search className="ml-4 h-4 w-4 text-muted-foreground" strokeWidth={1.4} />
             <input placeholder="Search Agbada neckline, cap band, gele..." className="flex-1 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-muted-foreground" />
-            <Link to="/marketplace" className="rounded-full bg-gold px-7 py-3 text-sm text-primary-foreground transition hover:shadow-gold">Search</Link>
+            <Link to="/marketplace" className="rounded-full bg-primary px-7 py-3 text-sm text-primary-foreground transition hover:shadow-glow">Search</Link>
           </form>
           <div className="mt-6 flex flex-wrap gap-2">
             {["#Agbada", "#SenatorKaftan", "#Dansiki", "#Caps"].map((t) => (
-              <Link key={t} to="/marketplace" className="rounded-full border border-ink-foreground/25 px-4 py-1.5 text-xs text-ink-foreground/85 backdrop-blur transition hover:border-gold hover:text-gold">{t}</Link>
+              <Link key={t} to="/marketplace" className="rounded-full border border-ink-foreground/25 px-4 py-1.5 text-xs text-ink-foreground/85 backdrop-blur transition hover:border-foreground hover:text-foreground">{t}</Link>
             ))}
           </div>
         </div>
@@ -53,7 +53,7 @@ function Home() {
             { i: Download, t: "Instant Post-Checkout Downloads" },
           ].map(({ i: Icon, t }) => (
             <div key={t} className="flex items-center justify-center gap-3 text-sm text-muted-foreground">
-              <Icon className="h-4 w-4 text-gold" strokeWidth={1.3} /> {t}
+              <Icon className="h-4 w-4 text-foreground" strokeWidth={1.3} /> {t}
             </div>
           ))}
         </div>
@@ -69,7 +69,7 @@ function Home() {
               <img src={c.image} alt={c.name} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
               <div className="absolute inset-x-3 bottom-3 flex items-center justify-between rounded-xl bg-background/90 px-4 py-3 backdrop-blur">
                 <div><p className="text-sm font-normal">{c.name}</p><p className="text-[11px] text-muted-foreground">{c.count} designs</p></div>
-                <ArrowUpRight className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                <ArrowUpRight className="h-4 w-4 text-foreground" strokeWidth={1.4} />
               </div>
             </Link>
           ))}
@@ -79,7 +79,7 @@ function Home() {
       <section className="mx-auto max-w-7xl px-6 pt-28">
         <div className="flex items-end justify-between">
           <div><p className="eyebrow">Curated</p><h2 className="mt-3 text-4xl md:text-5xl">Featured designs</h2></div>
-          <Link to="/marketplace" className="text-sm text-muted-foreground hover:text-gold">View all →</Link>
+          <Link to="/marketplace" className="text-sm text-muted-foreground hover:text-foreground">View all →</Link>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
           {designs.slice(0, 8).map((d) => <ProductCard key={d.id} d={d} />)}

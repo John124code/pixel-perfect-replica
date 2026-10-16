@@ -11,12 +11,12 @@ export function ProductCard({ d }: { d: Design }) {
         <span className="absolute left-3 top-3 rounded-full bg-background/90 px-2.5 py-1 text-[10px] tracking-wide backdrop-blur">
           {(d.stitches / 1000).toFixed(1)}k stitches
         </span>
-        <button aria-label="Save" className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-background/90 text-foreground/60 hover:text-gold">
+        <button aria-label="Save" className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-background/90 text-foreground/60 hover:text-foreground">
           <Heart className="h-4 w-4" strokeWidth={1.4} />
         </button>
         <button
           onClick={() => add(d)}
-          className="absolute inset-x-3 bottom-3 translate-y-[140%] rounded-full bg-gold py-3 text-sm font-normal text-primary-foreground shadow-gold transition-transform duration-500 ease-out group-hover:translate-y-0"
+          className="absolute inset-x-3 bottom-3 translate-y-[140%] rounded-full bg-primary py-3 text-sm font-normal text-primary-foreground shadow-glow transition-transform duration-500 ease-out group-hover:translate-y-0"
         >
           Add to Cart
         </button>

@@ -34,7 +34,7 @@ function Marketplace() {
         <div className="flex flex-col gap-4 border-y py-5 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-2">
             {cats.map((c) => (
-              <button key={c} onClick={() => setCat(c)} className={`rounded-full border px-4 py-1.5 text-xs transition ${cat === c ? "border-highlight bg-highlight text-primary-foreground" : "hover:border-highlight"}`}>{c}</button>
+              <button key={c} onClick={() => setCat(c)} className={`rounded-full border px-4 py-1.5 text-xs transition ${cat === c ? "border-gold bg-gold text-primary-foreground" : "hover:border-gold"}`}>{c}</button>
             ))}
           </div>
           <label className="flex items-center gap-2 rounded-full border px-4 py-2">
@@ -43,7 +43,7 @@ function Marketplace() {
           </label>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
-          {list.map((d, i) => <ProductCard key={d.id} d={d} index={i} />)}
+          {list.map((d) => <ProductCard key={d.id} d={d} />)}
         </div>
         {list.length === 0 && <p className="py-20 text-center text-muted-foreground">No designs match your search.</p>}
       </div>

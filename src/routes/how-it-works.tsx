@@ -22,7 +22,7 @@ export const Route = createFileRoute("/how-it-works")({
           ["03", "Download & stitch", "Get DST and EMB files instantly, with free version updates forever."],
         ].map(([n, t, d]) => (
           <div key={n} className="bg-background p-10">
-            <p className="font-display text-5xl text-highlight">{n}</p>
+            <p className="font-display text-5xl text-gold">{n}</p>
             <h3 className="mt-6 text-3xl">{t}</h3>
             <p className="mt-3 text-sm text-muted-foreground">{d}</p>
           </div>

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/about")({
     <>
       <PageIntro eyebrow="About" title="Crafted for the tailors of Africa." />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2">
-        <img src={hero} alt="Embroidery detail" loading="lazy" className="aspect-[4/3] rounded-2xl object-cover grayscale" />
+        <img src={hero} alt="Gold embroidery" loading="lazy" className="aspect-[4/3] rounded-2xl object-cover" />
         <div className="space-y-5 text-muted-foreground">
           <p>EMB Connect connects fashion brands and tailors directly with professional digitizers — no middlemen, no guesswork.</p>
           <p>Every design is reviewed for stitch quality and machine compatibility before it reaches the marketplace, so what you download runs cleanly on your machine.</p>

@@ -33,20 +33,20 @@ function Seller() {
         <form onSubmit={(e) => { e.preventDefault(); toast.success("Design submitted for review"); }} className="grid gap-6 rounded-2xl border p-8 md:grid-cols-2">
           <div className="space-y-4">
             <p className="eyebrow">New listing</p>
-            <input required placeholder="Design title" className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-gold" />
+            <input required placeholder="Design title" className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-highlight" />
             <div className="grid grid-cols-2 gap-3">
-              <input placeholder="Price (₦)" type="number" className="rounded-xl border px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input placeholder="Stitch count" type="number" className="rounded-xl border px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input placeholder="Price (₦)" type="number" className="rounded-xl border px-4 py-3 text-sm outline-none focus:border-highlight" />
+              <input placeholder="Stitch count" type="number" className="rounded-xl border px-4 py-3 text-sm outline-none focus:border-highlight" />
             </div>
-            <select className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-gold">
+            <select className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-highlight">
               {["Agbada", "Senator / Kaftan", "Dansiki", "Caps", "Women's"].map((c) => <option key={c}>{c}</option>)}
             </select>
-            <button className="rounded-full bg-gold px-7 py-3 text-sm text-primary-foreground hover:shadow-gold">Publish design</button>
+            <button className="rounded-full bg-highlight px-7 py-3 text-sm text-primary-foreground hover:shadow-glow">Publish design</button>
           </div>
           <div className="grid gap-3">
             {[["Design files", ".dst,.emb", ".DST / .EMB"], ["Preview images", "image/*", "JPG / PNG"]].map(([l, a, h]) => (
-              <label key={l} className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed p-6 text-center hover:border-gold">
-                <Upload className="h-5 w-5 text-gold" strokeWidth={1.3} />
+              <label key={l} className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed p-6 text-center hover:border-highlight">
+                <Upload className="h-5 w-5 text-highlight" strokeWidth={1.3} />
                 <span className="mt-2 text-sm">{l}</span>
                 <span className="text-xs text-muted-foreground">{h}</span>
                 <input type="file" accept={a} multiple className="hidden" />
@@ -59,7 +59,7 @@ function Seller() {
             <thead className="bg-muted text-left text-xs text-muted-foreground"><tr><th className="p-4 font-normal">Design</th><th className="p-4 font-normal">Price</th><th className="p-4 font-normal">Sales</th><th className="p-4 font-normal">Status</th></tr></thead>
             <tbody className="divide-y">
               {mine.map((d, i) => (
-                <tr key={d.id}><td className="p-4">{d.title}</td><td className="p-4">{formatNaira(d.price)}</td><td className="p-4">{12 + i * 7}</td><td className="p-4"><span className="rounded-full bg-gold-soft px-2.5 py-1 text-xs text-gold">Live</span></td></tr>
+                <tr key={d.id}><td className="p-4">{d.title}</td><td className="p-4">{formatNaira(d.price)}</td><td className="p-4">{12 + i * 7}</td><td className="p-4"><span className="rounded-full bg-highlight-soft px-2.5 py-1 text-xs text-highlight">Live</span></td></tr>
               ))}
             </tbody>
           </table>

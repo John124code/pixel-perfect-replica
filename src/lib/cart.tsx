@@ -1,6 +1,8 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
-import type { Design } from "./data";
+import { designs, type Design } from "./data";
+
+const STORAGE_KEY = "emb-cart";
 
 type CartCtx = {
   items: Design[];

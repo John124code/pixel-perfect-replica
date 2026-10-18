@@ -37,7 +37,7 @@ function Cart() {
           {items.length === 0 && (
             <div className="py-20 text-center">
               <p className="text-muted-foreground">Your cart is empty.</p>
-              <Link to="/marketplace" className="mt-4 inline-block text-foreground">Browse the marketplace →</Link>
+              <Link to="/marketplace" className="mt-4 inline-block text-gold">Browse the marketplace →</Link>
             </div>
           )}
           {items.map((d) => (
@@ -56,9 +56,9 @@ function Cart() {
           <p className="eyebrow">Payment method</p>
           <div className="mt-5 space-y-3">
             {gateways.map((g) => (
-              <label key={g.id} className={`block cursor-pointer rounded-xl border p-4 transition ${pay === g.id ? "border-foreground bg-secondary" : "hover:border-foreground/50"}`}>
+              <label key={g.id} className={`block cursor-pointer rounded-xl border p-4 transition ${pay === g.id ? "border-gold bg-gold-soft" : "hover:border-gold/50"}`}>
                 <div className="flex items-center gap-3">
-                  <input type="radio" checked={pay === g.id} onChange={() => setPay(g.id)} className="accent-[var(--primary)]" />
+                  <input type="radio" checked={pay === g.id} onChange={() => setPay(g.id)} className="accent-[var(--gold)]" />
                   <span className="text-sm font-normal">{g.name}</span>
                 </div>
                 <p className="mt-1.5 pl-6 text-xs text-muted-foreground">{g.note}</p>
@@ -72,7 +72,7 @@ function Cart() {
           <button
             disabled={!items.length}
             onClick={() => { toast.success("Order placed — files available in My Downloads"); clear(); }}
-            className="mt-6 w-full rounded-full bg-primary py-3.5 text-sm text-primary-foreground transition hover:shadow-glow disabled:opacity-40"
+            className="mt-6 w-full rounded-full bg-gold py-3.5 text-sm text-primary-foreground transition hover:shadow-gold disabled:opacity-40"
           >
             Pay {formatNaira(total)}
           </button>

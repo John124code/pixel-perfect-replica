@@ -36,7 +36,7 @@ function Digitizing() {
         <div className="mb-10 flex items-center gap-3">
           {steps.map((s, i) => (
             <div key={s} className="flex flex-1 items-center gap-3">
-              <span className={`grid h-8 w-8 place-items-center rounded-full border text-xs ${i <= step ? "border-foreground bg-primary text-primary-foreground" : ""}`}>{i < step ? <Check className="h-3.5 w-3.5" /> : i + 1}</span>
+              <span className={`grid h-8 w-8 place-items-center rounded-full border text-xs ${i <= step ? "border-gold bg-gold text-primary-foreground" : ""}`}>{i < step ? <Check className="h-3.5 w-3.5" /> : i + 1}</span>
               <span className={`text-sm ${i === step ? "" : "text-muted-foreground"}`}>{s}</span>
               {i < steps.length - 1 && <span className="h-px flex-1 bg-border" />}
             </div>
@@ -44,8 +44,8 @@ function Digitizing() {
         </div>
         <div className="rounded-2xl border p-8">
           {step === 0 && (
-            <label className="flex cursor-pointer flex-col items-center rounded-xl border border-dashed p-14 text-center hover:border-foreground">
-              <Upload className="h-6 w-6 text-foreground" strokeWidth={1.3} />
+            <label className="flex cursor-pointer flex-col items-center rounded-xl border border-dashed p-14 text-center hover:border-gold">
+              <Upload className="h-6 w-6 text-gold" strokeWidth={1.3} />
               <span className="mt-3">{file || "Upload reference artwork or logo"}</span>
               <span className="mt-1 text-xs text-muted-foreground">PNG, JPG, PDF, AI · up to 20MB</span>
               <input type="file" className="hidden" onChange={(e) => setFile(e.target.files?.[0]?.name ?? "")} />
@@ -57,16 +57,16 @@ function Digitizing() {
                 <p className="mb-3 text-sm">Garment</p>
                 <div className="flex flex-wrap gap-2">
                   {Object.keys(base).map((g) => (
-                    <button key={g} onClick={() => setGarment(g)} className={`rounded-full border px-4 py-1.5 text-xs ${garment === g ? "border-foreground bg-primary text-primary-foreground" : ""}`}>{g}</button>
+                    <button key={g} onClick={() => setGarment(g)} className={`rounded-full border px-4 py-1.5 text-xs ${garment === g ? "border-gold bg-gold text-primary-foreground" : ""}`}>{g}</button>
                   ))}
                 </div>
               </div>
               <div>
                 <p className="mb-3 text-sm">Approx. size: {size} cm</p>
-                <input type="range" min={5} max={60} value={size} onChange={(e) => setSize(+e.target.value)} className="w-full accent-[var(--primary)]" />
+                <input type="range" min={5} max={60} value={size} onChange={(e) => setSize(+e.target.value)} className="w-full accent-[var(--gold)]" />
               </div>
-              <label className="flex items-center gap-3 text-sm"><input type="checkbox" checked={rush} onChange={(e) => setRush(e.target.checked)} className="accent-[var(--primary)]" /> Rush delivery (24 hours)</label>
-              <textarea placeholder="Notes for the digitizer (thread colours, fabric...)" className="w-full rounded-xl border p-4 text-sm outline-none focus:border-foreground" rows={3} />
+              <label className="flex items-center gap-3 text-sm"><input type="checkbox" checked={rush} onChange={(e) => setRush(e.target.checked)} className="accent-[var(--gold)]" /> Rush delivery (24 hours)</label>
+              <textarea placeholder="Notes for the digitizer (thread colours, fabric...)" className="w-full rounded-xl border p-4 text-sm outline-none focus:border-gold" rows={3} />
             </div>
           )}
           {step === 2 && (
@@ -79,9 +79,9 @@ function Digitizing() {
           <div className="mt-8 flex justify-between">
             <button disabled={step === 0} onClick={() => setStep(step - 1)} className="text-sm text-muted-foreground disabled:opacity-0">← Back</button>
             {step < 2 ? (
-              <button disabled={step === 0 && !file} onClick={() => setStep(step + 1)} className="rounded-full bg-primary px-7 py-3 text-sm text-primary-foreground hover:shadow-glow disabled:opacity-40">Continue</button>
+              <button disabled={step === 0 && !file} onClick={() => setStep(step + 1)} className="rounded-full bg-gold px-7 py-3 text-sm text-primary-foreground hover:shadow-gold disabled:opacity-40">Continue</button>
             ) : (
-              <button onClick={() => setStep(0)} className="rounded-full bg-primary px-7 py-3 text-sm text-primary-foreground hover:shadow-glow">Submit request</button>
+              <button onClick={() => setStep(0)} className="rounded-full bg-gold px-7 py-3 text-sm text-primary-foreground hover:shadow-gold">Submit request</button>
             )}
           </div>
         </div>

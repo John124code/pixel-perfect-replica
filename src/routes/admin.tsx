@@ -47,7 +47,7 @@ function Admin() {
               {tx.map(([id, who, via, amt, st]) => (
                 <div key={id} className="flex items-center justify-between py-3">
                   <div><p>{who}</p><p className="text-xs text-muted-foreground">{id} · {via}</p></div>
-                  <div className="text-right"><p>{formatNaira(amt)}</p><p className={`text-xs ${st === "Paid" ? "text-success" : "text-foreground"}`}>{st}</p></div>
+                  <div className="text-right"><p>{formatNaira(amt)}</p><p className={`text-xs ${st === "Paid" ? "text-success" : "text-gold"}`}>{st}</p></div>
                 </div>
               ))}
             </div>
@@ -60,7 +60,7 @@ function Admin() {
                   <div><p>{v.name}</p><p className="text-xs text-muted-foreground">{v.designs} designs · {v.status}</p></div>
                   {v.status === "Pending" && (
                     <div className="flex gap-2">
-                      <button onClick={() => setStatus(v.name, "Approved")} className="rounded-full bg-primary px-4 py-1.5 text-xs text-primary-foreground">Approve</button>
+                      <button onClick={() => setStatus(v.name, "Approved")} className="rounded-full bg-gold px-4 py-1.5 text-xs text-primary-foreground">Approve</button>
                       <button onClick={() => setStatus(v.name, "Rejected")} className="rounded-full border px-4 py-1.5 text-xs">Reject</button>
                     </div>
                   )}
@@ -73,7 +73,7 @@ function Admin() {
           <p className="eyebrow">Custom design requests</p>
           <div className="mt-4 divide-y text-sm">
             {[["Royal crest for wedding agbada", "Agbada", "Quote sent"], ["Church logo on caps (x40)", "Caps", "New"], ["Gele border floral", "Women's", "In production"]].map(([t, c, s]) => (
-              <div key={t} className="flex justify-between py-3"><div><p>{t}</p><p className="text-xs text-muted-foreground">{c}</p></div><span className="text-xs text-foreground">{s}</span></div>
+              <div key={t} className="flex justify-between py-3"><div><p>{t}</p><p className="text-xs text-muted-foreground">{c}</p></div><span className="text-xs text-gold">{s}</span></div>
             ))}
           </div>
         </section>

@@ -8,7 +8,9 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { supabase } from '@/integrations/supabase/client';
+import { AuthContext, type AuthState } from '@/lib/auth';
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -116,9 +118,33 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const [auth, setAuth] = useState<AuthState>({ user: null, loading: true, recovery: false, profile: null });
+  useEffect(() => {
+    let active = true;
+    const refresh = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!active) return;
+      setAuth(previous => ({ ...previous, user, loading: false, profile: null }));
+      if (user) {
+        const { data } = await supabase.from('profiles').select('display_name, avatar_url').eq('id', user.id).single();
+        if (active) setAuth(previous => previous.user?.id === user.id ? { ...previous, profile: data } : previous);
+      }
+    };
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(event => {
+      if (event === 'PASSWORD_RECOVERY') { setAuth(previous => ({ ...previous, recovery: true })); void refresh(); return; }
+      if (event !== 'SIGNED_IN' && event !== 'SIGNED_OUT' && event !== 'USER_UPDATED') return;
+      if (event === 'SIGNED_OUT') setAuth({ user: null, loading: false, recovery: false, profile: null });
+      else { void refresh(); void queryClient.invalidateQueries(); }
+      void router.invalidate();
+    });
+    void refresh();
+    return () => { active = false; subscription.unsubscribe(); };
+  }, [queryClient, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AuthContext.Provider value={auth}>
       <CartProvider>
         <SiteHeader />
         <main className="min-h-[70vh]">
@@ -127,6 +153,7 @@ function RootComponent() {
         <SiteFooter />
         <Toaster position="bottom-right" />
       </CartProvider>
+      </AuthContext.Provider>
     </QueryClientProvider>
   );
 }

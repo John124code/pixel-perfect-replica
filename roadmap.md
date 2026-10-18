@@ -1,0 +1,3 @@
+- [ ] Add login, signup, and password recovery pages.
+- [ ] Connect saved profiles and session-aware account menu.
+- [ ] Verify signup, profile creation, login, and logout.

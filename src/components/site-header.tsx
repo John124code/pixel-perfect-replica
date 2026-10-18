@@ -1,4 +1,9 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useQueryClient } from '@tanstack/react-query';
+import { useAuth } from '@/lib/auth';
+import { supabase } from '@/integrations/supabase/client';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 import { Search, ShoppingBag, User } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
@@ -86,22 +91,31 @@ export function PageIntro({ eyebrow, title, sub }: { eyebrow: string; title: str
 
 function AccountMenu() {
   const [open, setOpen] = useState(false);
+  const { user, profile, loading } = useAuth();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  async function signOut() {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    const { error } = await supabase.auth.signOut();
+    if (error) { toast.error(error.message); return; }
+    await navigate({ to: '/auth', replace: true });
+  }
   const item = "block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-accent";
   return (
     <div className="relative" onMouseLeave={() => setOpen(false)}>
-      <button onClick={() => setOpen(!open)} aria-label="Account" className="grid h-8 w-8 place-items-center rounded-full border text-foreground/70 hover:border-gold hover:text-gold">
+      <Button variant="outline" size="icon" onClick={() => setOpen(!open)} aria-label={user ? 'Your account' : 'Account'} aria-expanded={open} className="h-8 w-8 rounded-full text-foreground/70">
         <User className="h-4 w-4" strokeWidth={1.4} />
-      </button>
+      </Button>
       {open && (
         <div className="absolute right-0 top-full z-50 w-56 pt-2">
           <div className="rounded-xl border bg-popover p-1.5 shadow-soft" onClick={() => setOpen(false)}>
-            <p className="px-3 py-2 text-xs text-muted-foreground">Sign in to EMB Connect</p>
-            <button className={item}>Continue with Google</button>
-            <button className={item}>Continue with Email</button>
+            <p className="break-words px-3 py-2 text-xs text-muted-foreground">{loading ? 'Loading account…' : user ? profile?.display_name || user.email : 'Sign in to EMB Connect'}</p>
+            {!user && !loading && <><Link to="/auth" className={item}>Sign in</Link><Link to="/signup" className={item}>Create account</Link></>}
+            {user && <Button variant="ghost" onClick={signOut} className="w-full justify-start">Sign out</Button>}
             <div className="my-1 h-px bg-border" />
             <Link to="/dashboard" className={item}>Buyer dashboard</Link>
             <Link to="/seller" className={item}>Seller portal</Link>
-            <Link to="/admin" className={item}>Admin panel</Link>
           </div>
         </div>
       )}
